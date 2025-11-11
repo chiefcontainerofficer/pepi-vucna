@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  sanjalica-web:
+    build:
+      context: ./app_web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MAILTRAP_API_TOKEN=""
+      - EMAIL_FROM=""
+    restart: unless-stopped

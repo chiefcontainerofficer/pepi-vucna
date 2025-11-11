@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  web:
+    image: pepi:latest
+    environment:
+      - NODE_ENV=production
+      - MAILTRAP_API_TOKEN=""
+      - EMAIL_FROM=""
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.pepi.rule=Host(`pepi.disketa.hr`)"
+        - "traefik.http.routers.pepi.entrypoints=websecure"
+        - "traefik.http.routers.pepi.tls=true"
+        - "traefik.http.routers.pepi.tls.certresolver=cloudflare"
+        - "traefik.http.routers.pepi.service=pepi"
+        - "traefik.http.services.pepi.loadbalancer.server.port=3000"
+    networks:
+      - public
+    
+networks:
+  public:
+    external: true
