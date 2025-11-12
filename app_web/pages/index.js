@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 const transportImages = [
-  '/images/transport/Image1.jpeg',
   '/images/transport/Image2.jpeg',
   '/images/transport/Image3.jpeg',
   '/images/transport/Image4.jpeg',
