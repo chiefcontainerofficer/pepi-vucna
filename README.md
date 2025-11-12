@@ -1,6 +1,6 @@
-# Sanjalica Website
+# PEPI Website
 
-Official website for Sanjalica.
+Official website for PEPI.
 
 ## Email Setup
 
@@ -68,10 +68,10 @@ docker stack deploy -c traefik-stack.yml traefik
 2. Deploy the application:
 ```bash
 # Build the image and tag it
-docker build -t sanjalica-web:latest .
+docker build -t pepi-web:latest .
 
 # Deploy with Mailtrap API token
-MAILTRAP_API_TOKEN=your_api_token docker stack deploy -c docker-stack.yml sanjalica
+MAILTRAP_API_TOKEN=your_api_token docker stack deploy -c docker-stack.yml pepi
 ```
 
 3. Verify deployment:
@@ -82,18 +82,18 @@ docker service ls
 ### Environment Variables
 
 - `MAILTRAP_API_TOKEN` - API token for Mailtrap email service (used as SMTP password)
-- `EMAIL_FROM` - Sender email address (default: info@sanjalica.eu)
+- `EMAIL_FROM` - Sender email address (default: info@pepi.eu)
 
 ### Scaling
 
 ```bash
-docker service scale sanjalica_web=2
+docker service scale pepi_web=2
 ```
 
 ### Logs
 
 ```bash
-docker service logs sanjalica_web
+docker service logs pepi_web
 ```
-# sanjalica
+# pepi
 # pepi-vucna
