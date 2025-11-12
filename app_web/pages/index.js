@@ -75,8 +75,8 @@ const services = [
     description: 'Natočili ste pogrešno gorivo? Brzo ćemo ispumpati gorivo iz vašeg vozila i osigurati da možete nastaviti putovanje.'
   },
   {
-    title: 'Sitni popravci vozila',
-    description: 'Nudimo usluge sitnih popravaka vozila na lokaciji kada je to moguće.'
+    title: 'Brzi popravci vozila na cesti',
+    description: 'Nudimo usluge brzih popravaka vozila na cesti kada je to moguće.'
   }
 ];
 
@@ -102,6 +102,17 @@ const heroTexts = [
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  // Sort features by title length only (longest first)
+  const sortedFeatures = [...features].sort((a, b) => {
+    return b.title.length - a.title.length;
+  });
+
+  // Sort services by title length only (longest first)
+  const sortedServices = [...services].sort((a, b) => {
+    return b.title.length - a.title.length;
+  });
 
   useEffect(() => {
     const imageInterval = setInterval(() => {
@@ -118,6 +129,19 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button when near the top of the page (within 300px from top)
+      setShowScrollButton(window.scrollY < 300);
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <Head>
@@ -127,7 +151,7 @@ export default function Home() {
       </Head>
       <main className="min-h-screen bg-black">
         {/* Hero Section with Image Carousel */}
-        <section className="relative w-full min-h-screen overflow-hidden">
+        <section className="relative w-full h-[50vh] sm:h-[70vh] max-h-[800px] overflow-hidden bg-black">
           {transportImages.map((image, index) => (
             <div
               key={index}
@@ -140,7 +164,7 @@ export default function Home() {
                 alt={`Transport vozila ${index + 1}`}
                 fill
                 priority={index === 0}
-                className="object-contain"
+                className="object-cover"
                 sizes="100vw"
               />
               <div className="absolute inset-0 bg-black/40"></div>
@@ -161,7 +185,7 @@ export default function Home() {
               </div>
             </div>
             {/* Fixed Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center px-4">
+            <div className="flex flex-row gap-3 justify-center px-4">
               <a 
                 href="tel:+385994055109" 
                 className="inline-block bg-primary text-black font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-lg shadow-2xl hover:bg-primary-dark active:scale-95 transition text-base sm:text-lg md:text-xl min-h-[44px] flex items-center justify-center"
@@ -195,7 +219,7 @@ export default function Home() {
         </section>
 
         {/* Introduction Section */}
-        <section className="bg-black py-8 sm:py-12">
+        <section className="bg-black py-4 sm:py-6">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               Ostali ste u kvaru, probušili ste gumu ili zaključali ključeve u vozilu?
@@ -206,50 +230,93 @@ export default function Home() {
           </div>
         </section>
 
+        {showScrollButton && (
+          <div className="text-center mt-4 mb-4">
+            <a
+            href="#zasto-odabrati-nas"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById('zasto-odabrati-nas');
+              if (element) {
+                const headerOffset = 40; // Approximate header height
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+              }
+            }}
+            className="inline-flex flex-col items-center justify-center bg-primary text-black font-bold w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-2xl hover:bg-primary-dark active:scale-95 transition-all duration-300 border-2 border-black"
+            aria-label="Zašto odabrati nas"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ animationDelay: '0.1s' }}>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ animationDelay: '0.2s' }}>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+        </div>
+        )}
+
         {/* Features Section */}
-        <section className="py-8 sm:py-12 bg-black">
+        <section id="zasto-odabrati-nas" className="py-4 sm:py-6 bg-black">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Zašto odabrati nas?</h2>
               <div className="w-24 h-1 bg-primary mx-auto"></div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto group">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="border-l-4 border-primary pl-6 py-4 hover:border-primary-dark transition-all duration-300"
-                >
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{feature.title}</h3>
-                  <p className="text-white/70 text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-16 max-w-6xl mx-auto group">
+              {sortedFeatures.map((feature, index) => {
+                const isRight = index % 2 !== 0;
+                return (
+                  <div
+                    key={index}
+                    className={`${isRight ? 'border-r-4 pr-6' : 'border-l-4 pl-6'} border-primary py-4 hover:border-primary-dark transition-all duration-300`}
+                  >
+                    <div className={`${isRight ? 'md:flex md:flex-col md:items-end' : ''}`}>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{feature.title}</h3>
+                      <p className="text-white/70 text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
 
         {/* Services Section */}
-        <section className="py-8 sm:py-12 pb-12 sm:pb-16 md:pb-20 bg-black">
+        <section id="nase-usluge" className="py-4 sm:py-6 pb-6 sm:pb-8 md:pb-10 bg-black">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Naše usluge</h2>
               <div className="w-24 h-1 bg-primary mx-auto"></div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto group">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="border-l-4 border-primary pl-6 py-4 hover:border-primary-dark transition-all duration-300"
-                >
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{service.title}</h3>
-                  <p className="text-white/70 text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
-                    {service.description}
-                  </p>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-16 max-w-6xl mx-auto group">
+              {sortedServices.map((service, index) => {
+                const isRight = index % 2 !== 0;
+                return (
+                  <div
+                    key={index}
+                    className={`${isRight ? 'border-r-4 pr-6' : 'border-l-4 pl-6'} border-primary py-4 hover:border-primary-dark transition-all duration-300`}
+                  >
+                    <div className={`${isRight ? 'md:flex md:flex-col md:items-end' : ''}`}>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{service.title}</h3>
+                      <p className="text-white/70 text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

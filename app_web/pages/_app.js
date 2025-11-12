@@ -80,56 +80,9 @@ function MyApp({ Component, pageProps }) {
             const didConsent = this.hasConsented();
             console.log('Cookie consent status changed:', didConsent);
             updateConsentState(didConsent);
-          },
-          "onRevokeChoice": function() {
-            console.log('Cookie consent revoked');
-            updateConsentState(false);
-            // Scroll to cookie banner when it appears
-            setTimeout(() => {
-              const cookieBanner = document.querySelector('.cc-window');
-              if (cookieBanner) {
-                cookieBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-              }
-            }, 100);
-          },
-          "onPopupOpen": function() {
-            // Scroll to cookie banner when it opens
-            setTimeout(() => {
-              const cookieBanner = document.querySelector('.cc-window');
-              if (cookieBanner) {
-                cookieBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-              }
-            }, 100);
           }
         });
         
-        // Add observer to watch for cookie banner appearance (only when it becomes visible)
-        let hasScrolledToBanner = false;
-        const observer = new MutationObserver((mutations) => {
-          const cookieBanner = document.querySelector('.cc-window');
-          if (cookieBanner && cookieBanner.style.display !== 'none' && !hasScrolledToBanner) {
-            const rect = cookieBanner.getBoundingClientRect();
-            // Only scroll if banner is not fully visible in viewport
-            if (rect.bottom > window.innerHeight || rect.top < 0) {
-              hasScrolledToBanner = true;
-              setTimeout(() => {
-                cookieBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                // Reset flag after scrolling completes
-                setTimeout(() => {
-                  hasScrolledToBanner = false;
-                }, 1000);
-              }, 100);
-            }
-          }
-        });
-        
-        // Start observing the body for cookie banner changes
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true,
-          attributes: true,
-          attributeFilter: ['style', 'class']
-        });
         console.log('Cookie consent initialized successfully');
       } catch (error) {
         console.error('Error initializing cookie consent:', error);
