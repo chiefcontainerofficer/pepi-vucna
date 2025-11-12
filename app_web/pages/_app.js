@@ -42,12 +42,12 @@ function MyApp({ Component, pageProps }) {
         window.cookieconsent.initialise({
           "palette": {
             "popup": {
-              "background": "#c4b5fd",
-              "text": "#ffffff"
+              "background": "#FBBF24",
+              "text": "#000000"
             },
             "button": {
-              "background": "#ffffff",
-              "text": "#c4b5fd"
+              "background": "#000000",
+              "text": "#FBBF24"
             }
           },
           "type": "opt-in",
