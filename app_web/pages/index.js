@@ -22,25 +22,6 @@ const transportImages = [
   '/images/transport/Image17.jpeg',
 ];
 
-const services = [
-  {
-    title: 'Prijevoz osobnih i lakih teretnih vozila',
-    description: 'Siguran i profesionalan prijevoz vaših vozila'
-  },
-  {
-    title: 'Prijevoz karamboliranih i neispravnih vozila',
-    description: 'Specijalizirani prijevoz oštećenih vozila'
-  },
-  {
-    title: 'Prijevoz građevinskih i poljoprivrednih strojeva',
-    description: 'Transport teških strojeva i opreme'
-  },
-  {
-    title: 'Prijevoz kamp-kućica, prikolica i motocikala',
-    description: 'Prijevoz rekreacijskih vozila i opreme'
-  }
-];
-
 const features = [
   {
     title: 'Polasci iz Istre',
@@ -60,7 +41,23 @@ const features = [
   }
 ];
 
-const otherServices = [
+const services = [
+  {
+    title: 'Prijevoz osobnih i lakih teretnih vozila',
+    description: 'Siguran i profesionalan prijevoz vaših vozila'
+  },
+  {
+    title: 'Prijevoz karamboliranih i neispravnih vozila',
+    description: 'Specijalizirani prijevoz oštećenih vozila'
+  },
+  {
+    title: 'Prijevoz građevinskih i poljoprivrednih strojeva',
+    description: 'Transport teških strojeva i opreme'
+  },
+  {
+    title: 'Prijevoz kamp-kućica, prikolica i motocikala',
+    description: 'Prijevoz rekreacijskih vozila i opreme'
+  },
   {
     title: 'Paljenje vozila i zamjena akumulatora na cesti',
     description: 'Vaše vozilo se neće upaliti? Naš tim će doći na lokaciju i pomoći vam s paljenjem vozila ili zamjenom akumulatora.'
@@ -76,13 +73,17 @@ const otherServices = [
   {
     title: 'Ispumpavanje pogrešno natočenog goriva',
     description: 'Natočili ste pogrešno gorivo? Brzo ćemo ispumpati gorivo iz vašeg vozila i osigurati da možete nastaviti putovanje.'
+  },
+  {
+    title: 'Sitni popravci vozila',
+    description: 'Nudimo usluge sitnih popravaka vozila na lokaciji kada je to moguće.'
   }
 ];
 
 const heroTexts = [
   {
-    title: 'POVOLJAN I SIGURAN TRANSPORT',
-    subtitle: 'Iz Istre prema cijeloj Hrvatskoj i povratno'
+    title: 'VUČNA SLUŽBA',
+    subtitle: 'Pomoć na cesti'
   },
   {
     title: 'PROFESIONALAN PRIJEVOZ VOZILA',
@@ -126,7 +127,7 @@ export default function Home() {
       </Head>
       <main className="min-h-screen bg-black">
         {/* Hero Section with Image Carousel */}
-        <section className="relative w-full h-[60vh] sm:h-[70vh] max-h-[700px] overflow-hidden">
+        <section className="relative w-full min-h-screen overflow-hidden">
           {transportImages.map((image, index) => (
             <div
               key={index}
@@ -139,7 +140,8 @@ export default function Home() {
                 alt={`Transport vozila ${index + 1}`}
                 fill
                 priority={index === 0}
-                className="object-cover"
+                className="object-contain"
+                sizes="100vw"
               />
               <div className="absolute inset-0 bg-black/40"></div>
             </div>
@@ -161,7 +163,7 @@ export default function Home() {
             {/* Fixed Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center px-4">
               <a 
-                href="tel:0994055109" 
+                href="tel:+385994055109" 
                 className="inline-block bg-primary text-black font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-lg shadow-2xl hover:bg-primary-dark active:scale-95 transition text-base sm:text-lg md:text-xl min-h-[44px] flex items-center justify-center"
               >
                 Nazovite nas
@@ -193,66 +195,33 @@ export default function Home() {
         </section>
 
         {/* Introduction Section */}
-        <section className="bg-black py-3 sm:py-4">
-          <div className="max-w-5xl mx-auto px-4">
-            <div className="bg-primary border-2 border-white rounded-2xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
-              <div className="text-center mb-4 sm:mb-6">
-                <div className="w-24 sm:w-32 h-1 bg-black mx-auto mb-4 sm:mb-6"></div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-3 sm:mb-4 px-2">
-                  Trebate pouzdan prijevoz vozila, strojeva ili tereta?
-                </h2>
-              </div>
-              <div className="flex justify-center">
-                <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/90 max-w-3xl mx-auto leading-relaxed text-center font-medium px-2">
-                  <p className="mb-2">
-                    Mi brinemo da sve stigne <span className="font-bold text-black border-b-2 border-black">sigurno, brzo i povoljno 24/7</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section className="py-3 sm:py-4 bg-black">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Naše usluge</h2>
-              <div className="w-24 h-1 bg-primary mx-auto"></div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 group">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-primary border-2 border-black rounded-xl p-4 shadow-lg hover:shadow-2xl hover:border-white transition-all duration-300 transform hover:-translate-y-2 overflow-hidden cursor-pointer"
-                >
-                  <h3 className="text-lg sm:text-xl font-bold text-black text-center mb-2">{service.title}</h3>
-                  <p className="text-black/90 text-center text-sm sm:text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
-                    {service.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+        <section className="bg-black py-8 sm:py-12">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+              Ostali ste u kvaru, probušili ste gumu ili zaključali ključeve u vozilu?
+            </h2>
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 leading-relaxed">
+              Mi smo tu da vam pomognemo. 24 sata u danu, 7 dana na tjednu, 365 dana u godini.
+            </p>
           </div>
         </section>
 
         {/* Features Section */}
-        <section className="py-3 sm:py-4 bg-black">
+        <section className="py-8 sm:py-12 bg-black">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-8">
+            <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Zašto odabrati nas?</h2>
               <div className="w-24 h-1 bg-primary mx-auto"></div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 group">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto group">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-primary rounded-xl p-4 shadow-lg text-center hover:shadow-xl transition-all duration-300 border-2 border-black hover:border-white overflow-hidden cursor-pointer"
+                  className="border-l-4 border-primary pl-6 py-4 hover:border-primary-dark transition-all duration-300"
                 >
-                  <h3 className="text-base sm:text-lg font-bold text-black text-center mb-2">{feature.title}</h3>
-                  <p className="text-black/90 mt-2 text-center text-sm sm:text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{feature.title}</h3>
+                  <p className="text-white/70 text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
                     {feature.description}
                   </p>
                 </div>
@@ -261,28 +230,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Other Services Section */}
-        <section className="py-3 sm:py-4 pb-12 sm:pb-16 md:pb-20 bg-black">
+        {/* Services Section */}
+        <section className="py-8 sm:py-12 pb-12 sm:pb-16 md:pb-20 bg-black">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Ostale usluge</h2>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Naše usluge</h2>
               <div className="w-24 h-1 bg-primary mx-auto"></div>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 group">
-              {otherServices.map((service, index) => (
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto group">
+              {services.map((service, index) => (
                 <div
                   key={index}
-                  className="bg-primary border-2 border-black rounded-xl p-4 shadow-lg hover:shadow-2xl hover:border-white transition-all duration-300 transform hover:-translate-y-2 overflow-hidden cursor-pointer"
+                  className="border-l-4 border-primary pl-6 py-4 hover:border-primary-dark transition-all duration-300"
                 >
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-black text-center mb-2">{service.title}</h3>
-                  <p className="text-black/90 text-center mt-2 text-sm sm:text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{service.title}</h3>
+                  <p className="text-white/70 text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
                     {service.description}
                   </p>
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 

@@ -4,8 +4,8 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Head>
-        <title>Politika privatnosti | PEPI Transport</title>
-        <meta name="description" content="Politika privatnosti tvrtke PEPI Transport. Saznajte kako štitimo vaše osobne podatke." />
+        <title>Politika privatnosti | PEPI Vučna Služba</title>
+        <meta name="description" content="Politika privatnosti tvrtke PEPI Vučna Služba. Saznajte kako štitimo vaše osobne podatke." />
       </Head>
       <main className="min-h-screen bg-white flex flex-col items-center px-4 py-12">
         <div className="w-full max-w-3xl">
@@ -50,7 +50,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-xl font-semibold text-primary mb-2">Kontakt informacije</h2>
             <p className="text-gray-700 mb-4">
               Ako imate pitanja ili zahtjeve vezane uz vašu privatnost i osobne podatke, možete nas kontaktirati na: <br />
-              Telefon: <a href="tel:0994055109" className="text-primary hover:underline">099-4055-109</a> <br />
+              Telefon: <a href="tel:+385994055109" className="text-primary hover:underline">+385 99 4055 109</a> <br />
               Adresa: Melnica, Melnica 15 A, Hrvatska
             </p>
           </section>

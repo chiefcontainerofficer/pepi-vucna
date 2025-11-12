@@ -10,7 +10,7 @@ export default function Footer() {
             <p className="text-white/80 text-sm mb-1">vl. Stjepan Percač</p>
             <p className="text-white/80 text-sm mb-1">Melnica, Melnica 15 A</p>
             <p className="text-white/80 text-sm mb-1">Hrvatska</p>
-            <p className="text-white/80 text-sm mb-1">Kontakt: <a href="tel:0994055109" className="text-primary hover:text-primary-dark font-semibold">099-4055-109</a></p>
+            <p className="text-white/80 text-sm mb-1">Kontakt: <a href="tel:+385994055109" className="text-primary hover:text-primary-dark font-semibold">+385 99 4055 109</a></p>
             <p className="text-white/80 text-sm mb-1">Poruka / WhatsApp / Viber</p>
           </div>
         </div>

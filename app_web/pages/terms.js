@@ -4,8 +4,8 @@ export default function Terms() {
   return (
     <>
       <Head>
-        <title>Uvjeti korištenja | PEPI Transport</title>
-        <meta name="description" content="Uvjeti korištenja web stranice PEPI Transport. Prava i obveze korisnika." />
+        <title>Uvjeti korištenja | PEPI Vučna Služba</title>
+        <meta name="description" content="Uvjeti korištenja web stranice PEPI Vučna Služba. Prava i obveze korisnika." />
       </Head>
       <main className="min-h-screen bg-white flex flex-col items-center px-4 py-12">
         <div className="w-full max-w-3xl">
@@ -57,7 +57,7 @@ export default function Terms() {
             <h2 className="text-xl font-semibold text-primary mb-2">Kontakt informacije</h2>
             <p className="text-gray-700">
               Ako imate pitanja o ovim uvjetima korištenja, molimo vas da nas kontaktirate na: <br />
-              Telefon: <a href="tel:0994055109" className="text-primary hover:underline">099-4055-109</a> <br />
+              Telefon: <a href="tel:+385994055109" className="text-primary hover:underline">+385 99 4055 109</a> <br />
               Adresa: Melnica, Melnica 15 A, Hrvatska
             </p>
           </section>

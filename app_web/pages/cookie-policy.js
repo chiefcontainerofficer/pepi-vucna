@@ -4,8 +4,8 @@ export default function CookiePolicy() {
   return (
     <>
       <Head>
-        <title>Politika kolačića | PEPI Transport</title>
-        <meta name="description" content="Politika kolačića tvrtke PEPI Transport. Saznajte kako koristimo kolačiće na našoj web stranici." />
+        <title>Politika kolačića | PEPI Vučna Služba</title>
+        <meta name="description" content="Politika kolačića tvrtke PEPI Vučna Služba. Saznajte kako koristimo kolačiće na našoj web stranici." />
       </Head>
       <main className="min-h-screen bg-white px-4 py-12">
         <div className="max-w-3xl mx-auto">

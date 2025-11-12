@@ -20,7 +20,7 @@ export default function Header() {
             <span className="text-2xl font-bold text-black">P</span>
           </div>
           <span className="text-base sm:text-xl font-bold text-white">
-            <span className="hidden sm:inline">PEPI Transport </span>
+            <span className="hidden sm:inline">PEPI Vučna Služba </span>
             <span className="sm:hidden">PEPI</span>
             <span className="text-primary"> 24/7</span>
           </span>

@@ -11,4 +11,19 @@
 
 .font-antropos {
   font-family: 'Antropos', sans-serif;
+}
+
+/* Cookie Consent Banner Positioning */
+.cc-window {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 9999 !important;
+  max-width: 100% !important;
+}
+
+.cc-window.cc-floating {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
 } 
