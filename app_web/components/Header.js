@@ -16,8 +16,14 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-black border-b-2 border-primary shadow-md">
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center space-x-3">
-          <div className="relative w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-2xl font-bold text-black">P</span>
+          <div className="relative w-12 h-12">
+            <Image
+              src="/images/logo.png"
+              alt="PEPI Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
           <span className="text-base sm:text-xl font-bold text-white">
             <span className="hidden sm:inline">PEPI Vučna Služba </span>

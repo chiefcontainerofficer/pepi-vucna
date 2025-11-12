@@ -23,12 +23,12 @@ const transportImages = [
 
 const features = [
   {
-    title: 'Polasci iz Istre',
-    description: 'Prema svim gradovima u Hrvatskoj i povratno'
-  },
-  {
     title: 'Osiguran teret',
     description: 'Teret je osiguran tijekom cijelog transporta'
+  },
+  {
+    title: 'Polasci iz Istre',
+    description: 'Prema svim gradovima u Hrvatskoj i povratno'
   },
   {
     title: 'Fleksibilni termini',
@@ -42,20 +42,20 @@ const features = [
 
 const services = [
   {
-    title: 'Prijevoz osobnih i lakih teretnih vozila',
-    description: 'Siguran i profesionalan prijevoz vaših vozila'
-  },
-  {
     title: 'Prijevoz karamboliranih i neispravnih vozila',
     description: 'Specijalizirani prijevoz oštećenih vozila'
   },
   {
-    title: 'Prijevoz građevinskih i poljoprivrednih strojeva',
-    description: 'Transport teških strojeva i opreme'
+    title: 'Prijevoz osobnih i lakih teretnih vozila',
+    description: 'Siguran i profesionalan prijevoz vaših vozila'
   },
   {
     title: 'Prijevoz kamp-kućica, prikolica i motocikala',
     description: 'Prijevoz rekreacijskih vozila i opreme'
+  },
+  {
+    title: 'Prijevoz građevinskih i poljoprivrednih strojeva',
+    description: 'Transport teških strojeva i opreme'
   },
   {
     title: 'Paljenje vozila i zamjena akumulatora na cesti',
@@ -103,15 +103,6 @@ export default function Home() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [showScrollButton, setShowScrollButton] = useState(false);
 
-  // Sort features by title length only (longest first)
-  const sortedFeatures = [...features].sort((a, b) => {
-    return b.title.length - a.title.length;
-  });
-
-  // Sort services by title length only (longest first)
-  const sortedServices = [...services].sort((a, b) => {
-    return b.title.length - a.title.length;
-  });
 
   useEffect(() => {
     const imageInterval = setInterval(() => {
@@ -271,7 +262,7 @@ export default function Home() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-16 max-w-6xl mx-auto group">
-              {sortedFeatures.map((feature, index) => {
+              {features.map((feature, index) => {
                 const isRight = index % 2 !== 0;
                 return (
                   <div
@@ -300,14 +291,14 @@ export default function Home() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-16 max-w-6xl mx-auto group">
-              {sortedServices.map((service, index) => {
+              {services.map((service, index) => {
                 const isRight = index % 2 !== 0;
                 return (
                   <div
                     key={index}
                     className={`${isRight ? 'border-r-4 pr-6' : 'border-l-4 pl-6'} border-primary py-4 hover:border-primary-dark transition-all duration-300`}
                   >
-                    <div className={`${isRight ? 'md:flex md:flex-col md:items-end' : ''}`}>
+                    <div className={`${isRight ? 'md:flex md:flex-col md:items-end md:text-right' : ''}`}>
                       <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{service.title}</h3>
                       <p className="text-white/70 text-base md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100 md:group-hover:mt-2 transition-all duration-300">
                         {service.description}
