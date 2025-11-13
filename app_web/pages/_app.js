@@ -6,15 +6,6 @@ import Script from 'next/script';
 function MyApp({ Component, pageProps }) {
   const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-  // Debug: Log the measurement ID (remove in production if needed)
-  useEffect(() => {
-    if (gaMeasurementId) {
-      console.log('GA Measurement ID:', gaMeasurementId);
-    } else {
-      console.warn('GA Measurement ID not found in environment variables');
-    }
-  }, [gaMeasurementId]);
-
   useEffect(() => {
     // Helper functions for Google Consent Mode
     function updateConsentState(consent) {
@@ -140,10 +131,9 @@ function MyApp({ Component, pageProps }) {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${gaMeasurementId}', {
-                page_path: window.location.pathname,
-                send_page_view: true
+                page_path: window.location.pathname
               });
-              console.log('Google Analytics initialized with ID: ${gaMeasurementId}');
+              console.log('Google Analytics initialized');
             `}
           </Script>
         </>
