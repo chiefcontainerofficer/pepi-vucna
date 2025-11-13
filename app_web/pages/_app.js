@@ -97,12 +97,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      {/* Google Consent Mode v2 */}
+      {/* Google Consent Mode v2 - Must run before GA */}
       <Script id="google-consent-mode" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
-          console.log('Setting up Google Consent Mode');
           
           // Set default consent state
           gtag('consent', 'default', {
@@ -114,11 +113,10 @@ function MyApp({ Component, pageProps }) {
             'personalization_storage': 'denied',
             'security_storage': 'granted'
           });
-          console.log('Default consent state set');
         `}
       </Script>
 
-      {/* Google Analytics */}
+      {/* Google tag (gtag.js) - Matches Google's exact snippet */}
       {gaMeasurementId && (
         <>
           <Script
@@ -130,10 +128,7 @@ function MyApp({ Component, pageProps }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${gaMeasurementId}', {
-                page_path: window.location.pathname
-              });
-              console.log('Google Analytics initialized');
+              gtag('config', '${gaMeasurementId}');
             `}
           </Script>
         </>
