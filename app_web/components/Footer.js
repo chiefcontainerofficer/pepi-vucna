@@ -23,7 +23,7 @@ export default function Footer() {
               >
                 <Image
                   src="/images/whatsapp.svg"
-                  alt="WhatsApp"
+                  alt="Kontaktirajte nas na WhatsApp"
                   width={20}
                   height={20}
                   className="object-contain"
@@ -38,7 +38,7 @@ export default function Footer() {
               >
                 <Image
                   src="/images/viber.svg"
-                  alt="Viber"
+                  alt="Kontaktirajte nas na Viber"
                   width={20}
                   height={20}
                   className="object-contain"

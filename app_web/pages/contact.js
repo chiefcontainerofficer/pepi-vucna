@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import { useState } from 'react';
+import SEO from '../components/SEO';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -46,13 +46,32 @@ export default function Contact() {
     }
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "PEPI Vučna Služba",
+      "telephone": "+385994055109",
+      "email": "info@pepi.hr",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Melnica 15 A",
+        "addressLocality": "Melnica",
+        "addressRegion": "Istra",
+        "addressCountry": "HR"
+      }
+    }
+  };
+
   return (
     <>
-      <Head>
-        <title>Kontakt | PEPI Vučna Služba</title>
-        <meta name="description" content="Kontaktirajte nas za transport vozila, strojeva i tereta iz Istre prema cijeloj Hrvatskoj. Dostupni 24/7 za pomoć na cesti." />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
+      <SEO
+        title="Kontakt"
+        description="Kontaktirajte nas za transport vozila, strojeva i tereta iz Istre prema cijeloj Hrvatskoj. Dostupni 24/7 za pomoć na cesti. Nazovite +385 99 4055 109 ili pošaljite upit."
+        url="/contact"
+        structuredData={structuredData}
+      />
       <main className="min-h-screen bg-black">
         <section className="py-8 sm:py-12 bg-black">
           <div className="max-w-4xl mx-auto px-4">

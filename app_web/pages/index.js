@@ -1,7 +1,7 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import SEO from '../components/SEO';
 
 const transportImages = [
   '/images/transport/Image2.jpeg',
@@ -136,13 +136,66 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "PEPI Vučna Služba",
+    "legalName": "PEPI, obrt za vuču vozila, vl. Stjepan Percač",
+    "image": "https://pepi.hr/images/logo.png",
+    "description": "Pouzdan prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Melnica 15 A",
+      "addressLocality": "Melnica",
+      "addressRegion": "Istra",
+      "addressCountry": "HR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.1125,
+      "longitude": 14.0181
+    },
+    "url": "https://pepi.hr",
+    "telephone": "+385994055109",
+    "priceRange": "$$",
+    "openingHours": "Mo-Su 00:00-23:59",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Hrvatska"
+    },
+    "serviceType": [
+      "Vučna služba",
+      "Prijevoz vozila",
+      "Pomoć na cesti",
+      "Prijevoz strojeva",
+      "Prijevoz kamp-kućica",
+      "Prijevoz motocikala",
+      "Paljenje vozila",
+      "Krpanje gume",
+      "Otključavanje vozila"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Usluge vučne službe",
+      "itemListElement": services.map((service, index) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": service.title,
+          "description": service.description
+        }
+      }))
+    }
+  };
+
   return (
     <>
-      <Head>
-        <title>Povoljan i siguran transport iz Istre prema cijeloj Hrvatskoj | PEPI Vuča i pomoć na cesti</title>
-        <meta name="description" content="Pouzdan prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7." />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
+      <SEO
+        title="Povoljan i siguran transport iz Istre prema cijeloj Hrvatskoj | PEPI Vuča i pomoć na cesti"
+        description="Pouzdan prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7."
+        url="/"
+        structuredData={structuredData}
+      />
       <main className="min-h-screen bg-black">
         {/* Hero Section with Image Carousel */}
         <section className="relative w-full h-[50vh] sm:h-[70vh] max-h-[800px] overflow-hidden bg-black">
@@ -155,7 +208,7 @@ export default function Home() {
             >
               <Image 
                 src={image} 
-                alt={`Transport vozila ${index + 1}`}
+                alt={`Profesionalan prijevoz vozila i tereta iz Istre - PEPI Vučna Služba ${index + 1}`}
                 fill
                 priority={index === 0}
                 className="object-cover"

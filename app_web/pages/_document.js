@@ -6,6 +6,7 @@ class MyDocument extends Document {
       <Html lang="hr">
         <Head>
           <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link rel="icon" href="/images/favicon.ico" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" />
           <script 

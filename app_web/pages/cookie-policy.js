@@ -1,12 +1,14 @@
-import Head from 'next/head';
+import SEO from '../components/SEO';
 
 export default function CookiePolicy() {
   return (
     <>
-      <Head>
-        <title>Politika kolačića | PEPI Vučna Služba</title>
-        <meta name="description" content="Politika kolačića tvrtke PEPI Vučna Služba. Saznajte kako koristimo kolačiće na našoj web stranici." />
-      </Head>
+      <SEO
+        title="Politika kolačića"
+        description="Politika kolačića tvrtke PEPI Vučna Služba. Saznajte kako koristimo kolačiće na našoj web stranici i kako možete upravljati svojim postavkama."
+        url="/cookie-policy"
+        noindex={true}
+      />
       <main className="min-h-screen bg-black px-4 py-8 sm:py-12">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-8">Politika kolačića</h1>

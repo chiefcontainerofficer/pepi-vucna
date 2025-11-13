@@ -19,7 +19,7 @@ export default function Header() {
           <div className="relative w-12 h-12">
             <Image
               src="/images/logo.png"
-              alt="PEPI Logo"
+              alt="PEPI Vučna Služba - Logo - Prijevoz vozila i pomoć na cesti 24/7"
               fill
               className="object-contain"
               priority

@@ -1,12 +1,14 @@
-import Head from 'next/head';
+import SEO from '../components/SEO';
 
 export default function Terms() {
   return (
     <>
-      <Head>
-        <title>Uvjeti korištenja | PEPI Vučna Služba</title>
-        <meta name="description" content="Uvjeti korištenja web stranice PEPI Vučna Služba. Prava i obveze korisnika." />
-      </Head>
+      <SEO
+        title="Uvjeti korištenja"
+        description="Uvjeti korištenja web stranice PEPI Vučna Služba. Prava i obveze korisnika. Pročitajte uvjete prije korištenja naše usluge."
+        url="/terms"
+        noindex={true}
+      />
       <main className="min-h-screen bg-black px-4 py-8 sm:py-12">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-8">Uvjeti korištenja</h1>

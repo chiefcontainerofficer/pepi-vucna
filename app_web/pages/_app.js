@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {
+  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
   useEffect(() => {
     // Helper functions for Google Consent Mode
     function updateConsentState(consent) {
@@ -117,22 +119,25 @@ function MyApp({ Component, pageProps }) {
       </Script>
 
       {/* Google Analytics */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-CEBD3H2NJT"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-CEBD3H2NJT', {
-            page_path: window.location.pathname,
-            debug_mode: true
-          });
-          console.log('Google Analytics initialized');
-        `}
-      </Script>
+      {gaMeasurementId && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${gaMeasurementId}', {
+                page_path: window.location.pathname
+              });
+              console.log('Google Analytics initialized');
+            `}
+          </Script>
+        </>
+      )}
 
       <Layout>
         <Component {...pageProps} />

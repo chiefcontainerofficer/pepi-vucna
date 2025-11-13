@@ -1,12 +1,14 @@
-import Head from 'next/head';
+import SEO from '../components/SEO';
 
 export default function PrivacyPolicy() {
   return (
     <>
-      <Head>
-        <title>Politika privatnosti | PEPI Vučna Služba</title>
-        <meta name="description" content="Politika privatnosti tvrtke PEPI Vučna Služba. Saznajte kako štitimo vaše osobne podatke." />
-      </Head>
+      <SEO
+        title="Politika privatnosti"
+        description="Politika privatnosti tvrtke PEPI Vučna Služba. Saznajte kako štitimo vaše osobne podatke i kako ih koristimo u skladu s GDPR propisima."
+        url="/privacy-policy"
+        noindex={true}
+      />
       <main className="min-h-screen bg-black px-4 py-8 sm:py-12">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-8">Politika privatnosti</h1>
