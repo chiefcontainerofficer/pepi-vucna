@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -11,7 +12,40 @@ export default function Footer() {
             <p className="text-white/80 text-sm mb-1">Melnica, Melnica 15 A</p>
             <p className="text-white/80 text-sm mb-1">Hrvatska</p>
             <p className="text-white/80 text-sm mb-1">Kontakt: <a href="tel:+385994055109" className="text-primary hover:text-primary-dark font-semibold">+385 99 4055 109</a></p>
-            <p className="text-white/80 text-sm mb-1">Poruka / WhatsApp / Viber</p>
+            <p className="text-white/80 text-sm mb-1 flex items-center gap-2">
+              <span>Poruka:</span>
+              <a 
+                href="https://wa.me/385994055109" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary-dark font-semibold flex items-center gap-1"
+                aria-label="WhatsApp"
+              >
+                <Image
+                  src="/images/whatsapp.svg"
+                  alt="WhatsApp"
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                />
+                <span>WhatsApp</span>
+              </a>
+              <span>/</span>
+              <a 
+                href="viber://chat?number=+385994055109" 
+                className="text-primary hover:text-primary-dark font-semibold flex items-center gap-1"
+                aria-label="Viber"
+              >
+                <Image
+                  src="/images/viber.svg"
+                  alt="Viber"
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                />
+                <span>Viber</span>
+              </a>
+            </p>
           </div>
         </div>
       
