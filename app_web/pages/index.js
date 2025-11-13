@@ -35,6 +35,10 @@ const features = [
     description: 'Hitne vožnje i fleksibilni termini preuzimanja 24/7'
   },
   {
+    title: 'Kapacitet do 2500kg',
+    description: 'Prijevoz tereta do 2500kg težine'
+  },
+  {
     title: 'Račun za svaku uslugu',
     description: 'Izdajemo račun za sve naše usluge'
   }
@@ -142,7 +146,7 @@ export default function Home() {
     "name": "PEPI Vučna Služba",
     "legalName": "PEPI, obrt za vuču vozila, vl. Stjepan Percač",
     "image": "https://pepi.hr/images/logo.png",
-    "description": "Pouzdan prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7.",
+    "description": "Pouzdan prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta do 2500kg iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Melnica 15 A",
@@ -192,7 +196,7 @@ export default function Home() {
     <>
       <SEO
         title="Povoljan i siguran transport iz Istre prema cijeloj Hrvatskoj | PEPI Vuča i pomoć na cesti"
-        description="Pouzdan prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7."
+        description="Pouzdan prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta do 2500kg iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7."
         url="/"
         structuredData={structuredData}
       />
