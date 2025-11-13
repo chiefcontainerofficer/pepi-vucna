@@ -11,7 +11,7 @@ services:
       replicas: 1
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.pepi.rule=Host(`pepi.disketa.hr`)"
+        - "traefik.http.routers.pepi.rule=Host(`pepi.hr`)"
         - "traefik.http.routers.pepi.entrypoints=websecure"
         - "traefik.http.routers.pepi.tls=true"
         - "traefik.http.routers.pepi.tls.certresolver=cloudflare"
