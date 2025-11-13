@@ -46,16 +46,20 @@ const services = [
     description: 'Specijalizirani prijevoz oštećenih vozila'
   },
   {
-    title: 'Prijevoz osobnih i lakih teretnih vozila',
-    description: 'Siguran i profesionalan prijevoz vaših vozila'
-  },
-  {
     title: 'Prijevoz kamp-kućica, prikolica i motocikala',
     description: 'Prijevoz rekreacijskih vozila i opreme'
   },
   {
+    title: 'Prijevoz osobnih i lakih teretnih vozila',
+    description: 'Siguran i profesionalan prijevoz vaših vozila'
+  },
+  {
     title: 'Prijevoz građevinskih i poljoprivrednih strojeva',
     description: 'Transport teških strojeva i opreme'
+  },
+  {
+    title: 'Prijevoz robe, namještaja i ostale opreme',
+    description: 'Transport robe, namještaja i ostale opreme poput paleta, kutija i drugih paketa'
   },
   {
     title: 'Paljenje vozila i zamjena akumulatora na cesti',
@@ -215,7 +219,7 @@ export default function Home() {
               Ostali ste u kvaru, probušili ste gumu ili zaključali ključeve u vozilu?
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 leading-relaxed">
-              Mi smo tu da vam pomognemo. 24 sata u danu, 7 dana na tjednu, 365 dana u godini.
+              Mi smo tu da vam pomognemo. 24 sata u danu, 7 dana u tjednu, 365 dana u godini.
             </p>
           </div>
         </section>
