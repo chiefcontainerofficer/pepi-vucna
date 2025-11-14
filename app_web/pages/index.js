@@ -4,21 +4,21 @@ import { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
 
 const transportImages = [
-  '/images/transport/Image2.jpeg',
-  '/images/transport/Image3.jpeg',
-  '/images/transport/Image4.jpeg',
-  '/images/transport/Image5.jpeg',
-  '/images/transport/Image6.jpeg',
-  '/images/transport/Image7.jpeg',
-  '/images/transport/Image8.jpeg',
-  '/images/transport/Image9.jpeg',
-  '/images/transport/Image10.jpeg',
-  '/images/transport/Image11.jpeg',
-  '/images/transport/Image13.jpeg',
-  '/images/transport/Image14.jpeg',
-  '/images/transport/Image15.jpeg',
-  '/images/transport/Image16.jpeg',
-  '/images/transport/Image17.jpeg',
+  '/images/transport/Image2.webp',
+  '/images/transport/Image3.webp',
+  '/images/transport/Image4.webp',
+  '/images/transport/Image5.webp',
+  '/images/transport/Image6.webp',
+  '/images/transport/Image7.webp',
+  '/images/transport/Image8.webp',
+  '/images/transport/Image9.webp',
+  '/images/transport/Image10.webp',
+  '/images/transport/Image11.webp',
+  '/images/transport/Image13.webp',
+  '/images/transport/Image14.webp',
+  '/images/transport/Image15.webp',
+  '/images/transport/Image16.webp',
+  '/images/transport/Image17.webp',
 ];
 
 const features = [
@@ -110,6 +110,9 @@ export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  
+  // Hardcoded Amber Tint filter
+  const imageFilter = 'sepia(0.35) saturate(1.25) brightness(1.08) contrast(1.12) hue-rotate(-8deg)';
 
 
   useEffect(() => {
@@ -210,20 +213,36 @@ export default function Home() {
                 index === currentImageIndex ? 'opacity-100' : 'opacity-0'
               }`}
             >
+              {/* Blurred background layer for edge extension */}
+              <Image 
+                src={image} 
+                alt=""
+                fill
+                priority={index === 0}
+                className="object-cover scale-110"
+                sizes="100vw"
+                aria-hidden="true"
+                style={{ 
+                  filter: `${imageFilter} blur(40px)`,
+                  opacity: 0.6
+                }}
+              />
+              {/* Main sharp image */}
               <Image 
                 src={image} 
                 alt={`Profesionalan prijevoz vozila i tereta iz Istre - PEPI Vučna Služba ${index + 1}`}
                 fill
                 priority={index === 0}
-                className="object-cover"
+                className="object-contain relative z-10"
                 sizes="100vw"
+                style={{ filter: imageFilter }}
               />
-              <div className="absolute inset-0 bg-black/40"></div>
+              <div className="absolute inset-0 bg-black/40 z-20"></div>
             </div>
           ))}
           
           {/* Overlay Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+          <div className="absolute inset-0 flex flex-col items-center justify-center z-30">
             {/* Text Content */}
             <div className="text-center px-4 max-w-5xl w-full mb-8">
               <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-3 drop-shadow-2xl transition-opacity duration-1000">
@@ -253,7 +272,7 @@ export default function Home() {
           </div>
 
           {/* Image Indicators */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2">
             {transportImages.map((_, index) => (
               <button
                 key={index}

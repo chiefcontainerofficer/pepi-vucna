@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="mb-6 md:mb-0">
             <h3 className="text-sm font-bold text-white mb-3">PEPI, obrt za vuču vozila</h3>
             <p className="text-white/80 text-sm mb-1">vl. Stjepan Percač</p>
-            <p className="text-white/80 text-sm mb-1">Melnica, Melnica 15 A</p>
+            <p className="text-white/80 text-sm mb-1">Melnica 15A</p>
             <p className="text-white/80 text-sm mb-1">Hrvatska</p>
             <p className="text-white/80 text-sm mb-1">Kontakt: <a href="tel:+385994055109" className="text-primary hover:text-primary-dark font-semibold">+385 99 4055 109</a></p>
             <p className="text-white/80 text-sm mb-1 flex items-center gap-2">
