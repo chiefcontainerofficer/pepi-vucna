@@ -149,51 +149,53 @@ export default function Home() {
     "name": "PEPI Vučna Služba",
     "legalName": "PEPI, obrt za vuču vozila, vl. Stjepan Percač",
     "image": "https://pepi.hr/images/logo.png",
-    "description": "Pouzdan prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta do 2500kg iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Melnica 15 A",
-      "addressLocality": "Melnica",
-      "addressRegion": "Istra",
-      "addressCountry": "HR"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 45.1125,
-      "longitude": 14.0181
-    },
-    "url": "https://pepi.hr",
-    "telephone": "+385994055109",
-    "priceRange": "$$",
-    "openingHours": "Mo-Su 00:00-23:59",
-    "areaServed": {
-      "@type": "Country",
-      "name": "Hrvatska"
-    },
-    "serviceType": [
-      "Vučna služba",
-      "Prijevoz vozila",
-      "Pomoć na cesti",
-      "Prijevoz strojeva",
-      "Prijevoz kamp-kućica",
-      "Prijevoz motocikala",
-      "Paljenje vozila",
-      "Krpanje gume",
-      "Otključavanje vozila"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Usluge vučne službe",
-      "itemListElement": services.map((service, index) => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": service.title,
-          "description": service.description
-        }
-      }))
-    }
-  };
+    "logo": "https://pepi.hr/images/logo.png",
+      "description": "Vučna služba PEPI je pouzdana usluga za prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta do 2500kg iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Melnica 15 A",
+        "addressLocality": "Melnica",
+        "addressRegion": "Istra",
+        "addressCountry": "HR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.0695911,
+        "longitude": 14.0011693
+      },
+      "url": "https://pepi.hr",
+      "telephone": "+385994055109",
+      "priceRange": "$$",
+      "openingHours": "Mo-Su 00:00-23:59",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Hrvatska"
+      },
+      "serviceType": [
+        "Vučna služba",
+        "Pomoć na cesti",
+        "Prijevoz vozila",
+        "Prijevoz tereta",
+        "Prijevoz strojeva",
+        "Prijevoz kamp-kućica",
+        "Prijevoz motocikala",
+        "Paljenje vozila",
+        "Krpanje gume",
+        "Otključavanje vozila"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Usluge vučne službe",
+        "itemListElement": services.map((service, index) => ({
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": service.title,
+            "description": service.description
+          }
+        }))
+      }
+    };
 
   return (
     <>

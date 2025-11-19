@@ -48,15 +48,25 @@ export default function SEO({
       <meta name="keywords" content="vučna služba, prijevoz vozila, pomoć na cesti, transport vozila Istra, vuča vozila, prijevoz strojeva, prijevoz kamp-kućica, pomoć na cesti 24/7, Istra Hrvatska" />
       <meta name="geo.region" content="HR-18" />
       <meta name="geo.placename" content="Melnica, Istra" />
-      <meta name="geo.position" content="45.1125;14.0181" />
-      <meta name="ICBM" content="45.1125, 14.0181" />
+      <meta name="geo.position" content="45.0695911;14.0011693" />
+      <meta name="ICBM" content="45.0695911, 14.0011693" />
 
       {/* Structured Data */}
       {structuredData && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        Array.isArray(structuredData) ? (
+          structuredData.map((data, index) => (
+            <script
+              key={index}
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+            />
+          ))
+        ) : (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          />
+        )
       )}
     </Head>
   );
