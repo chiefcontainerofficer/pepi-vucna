@@ -1,10 +1,21 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
-  render() {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
     // Get GA Measurement ID from environment variable (available at runtime in Docker)
+    // Fallback to hardcoded value if env var is not set
+    const gaMeasurementId = process.env.GA_MEASUREMENT_ID || 'G-GS92FW34P3';
+    return {
+      ...initialProps,
+      gaMeasurementId,
+    };
+  }
+
+  render() {
+    // Get GA Measurement ID from getInitialProps (available at runtime in Docker)
     // Using GA_MEASUREMENT_ID instead of NEXT_PUBLIC_* so it works with Docker Swarm
-    const gaMeasurementId = process.env.GA_MEASUREMENT_ID || '';
+    const { gaMeasurementId } = this.props;
     
     return (
       <Html lang="hr">
