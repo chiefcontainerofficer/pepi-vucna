@@ -1,10 +1,22 @@
 import '../styles/globals.css';
 import Layout from '../components/Layout';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  // Get GA ID from window (injected by _document.js at runtime)
+  // This works with Docker Swarm where env vars are set at runtime
+  // Use state to ensure we get the value after the script executes
+  const [gaMeasurementId, setGaMeasurementId] = useState(
+    typeof window !== 'undefined' ? window.__GA_MEASUREMENT_ID__ : null
+  );
+
+  useEffect(() => {
+    // Check for GA ID in case it wasn't available on first render
+    if (!gaMeasurementId && typeof window !== 'undefined') {
+      setGaMeasurementId(window.__GA_MEASUREMENT_ID__ || null);
+    }
+  }, [gaMeasurementId]);
 
   useEffect(() => {
     // Helper functions for Google Consent Mode

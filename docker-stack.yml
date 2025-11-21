@@ -8,7 +8,7 @@ services:
       - MAILTRAP_API_TOKEN=59f26ac9f36854481c99eaf88913fa8c
       - EMAIL_FROM=info@pepi.hr
       - EMAIL_TO=pepi.vucnasluzba@gmail.com
-      - NEXT_PUBLIC_GA_MEASUREMENT_ID=G-GS92FW34P3
+      - GA_MEASUREMENT_ID=G-GS92FW34P3
     deploy:
       replicas: 1
       labels:
