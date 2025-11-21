@@ -17,13 +17,44 @@ class MyDocument extends Document {
             src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"
             defer
           />
-          {/* Inject GA Measurement ID for runtime access */}
+          {/* Google Consent Mode v2 - Must run before GA */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                
+                // Set default consent state
+                gtag('consent', 'default', {
+                  'ad_storage': 'denied',
+                  'analytics_storage': 'denied',
+                  'ad_user_data': 'denied',
+                  'ad_personalization': 'denied',
+                  'functionality_storage': 'denied',
+                  'personalization_storage': 'denied',
+                  'security_storage': 'granted'
+                });
+              `,
+            }}
+          />
+          {/* Google tag (gtag.js) - Exact Google snippet */}
           {gaMeasurementId && (
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.__GA_MEASUREMENT_ID__ = '${gaMeasurementId}';`,
-              }}
-            />
+            <>
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${gaMeasurementId}');
+                  `,
+                }}
+              />
+            </>
           )}
         </Head>
         <body>

@@ -1,22 +1,8 @@
 import '../styles/globals.css';
 import Layout from '../components/Layout';
-import { useEffect, useState } from 'react';
-import Script from 'next/script';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }) {
-  // Get GA ID from window (injected by _document.js at runtime)
-  // This works with Docker Swarm where env vars are set at runtime
-  // Use state to ensure we get the value after the script executes
-  const [gaMeasurementId, setGaMeasurementId] = useState(
-    typeof window !== 'undefined' ? window.__GA_MEASUREMENT_ID__ : null
-  );
-
-  useEffect(() => {
-    // Check for GA ID in case it wasn't available on first render
-    if (!gaMeasurementId && typeof window !== 'undefined') {
-      setGaMeasurementId(window.__GA_MEASUREMENT_ID__ || null);
-    }
-  }, [gaMeasurementId]);
 
   useEffect(() => {
     // Helper functions for Google Consent Mode
@@ -108,48 +94,9 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <>
-      {/* Google Consent Mode v2 - Must run before GA */}
-      <Script id="google-consent-mode" strategy="beforeInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          
-          // Set default consent state
-          gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'analytics_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'functionality_storage': 'denied',
-            'personalization_storage': 'denied',
-            'security_storage': 'granted'
-          });
-        `}
-      </Script>
-
-      {/* Google tag (gtag.js) - Matches Google's exact snippet */}
-      {gaMeasurementId && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${gaMeasurementId}');
-            `}
-          </Script>
-        </>
-      )}
-
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 
