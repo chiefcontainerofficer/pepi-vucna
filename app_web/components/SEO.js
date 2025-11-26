@@ -14,10 +14,13 @@ export default function SEO({
   type = 'website',
   noindex = false,
   structuredData = null,
+  fbAppId = null,
 }) {
   const fullTitle = title === defaultTitle ? title : `${title} | ${siteName}`;
   const fullUrl = url.startsWith('http') ? url : `${siteUrl}${url}`;
   const fullImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+  // Get fb:app_id from prop or environment variable (supports both NEXT_PUBLIC_* and server-side env vars)
+  const facebookAppId = fbAppId || process.env.NEXT_PUBLIC_FB_APP_ID || process.env.FB_APP_ID;
 
   return (
     <Head>
@@ -35,6 +38,7 @@ export default function SEO({
       <meta property="og:image" content={fullImage} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content="hr_HR" />
+      {facebookAppId && <meta property="fb:app_id" content={facebookAppId} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
