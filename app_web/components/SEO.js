@@ -4,7 +4,7 @@ const defaultTitle = 'PEPI Vučna Služba - Prijevoz vozila i pomoć na cesti 24
 const defaultDescription = 'Pouzdan prijevoz vozila, strojeva, kamp-kućica, motocikala i drugog tereta do 2500kg iz Istre prema svim gradovima u Hrvatskoj i povratno. Brza, sigurna i profesionalna usluga 24/7.';
 const siteUrl = 'https://pepi.hr';
 const siteName = 'PEPI Vučna Služba';
-const defaultImage = `${siteUrl}/images/logo.png`;
+const defaultImage = `${siteUrl}/images/transport/Image2.webp`;
 
 export default function SEO({
   title = defaultTitle,
