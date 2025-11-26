@@ -9,6 +9,7 @@ services:
       - EMAIL_FROM=info@pepi.hr
       - EMAIL_TO=pepi.vucnasluzba@gmail.com
       - GA_MEASUREMENT_ID=G-GS92FW34P3
+      - FACEBOOK_APP_ID="1021297390187145"
     deploy:
       replicas: 1
       labels:

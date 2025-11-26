@@ -19,8 +19,8 @@ export default function SEO({
   const fullTitle = title === defaultTitle ? title : `${title} | ${siteName}`;
   const fullUrl = url.startsWith('http') ? url : `${siteUrl}${url}`;
   const fullImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
-  // Get fb:app_id from prop or environment variable (supports both NEXT_PUBLIC_* and server-side env vars)
-  const facebookAppId = fbAppId || process.env.NEXT_PUBLIC_FB_APP_ID || process.env.FB_APP_ID;
+  // Get fb:app_id from prop or environment variable
+  const facebookAppId = fbAppId || process.env.FACEBOOK_APP_ID;
 
   return (
     <Head>

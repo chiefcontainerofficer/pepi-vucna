@@ -11,4 +11,5 @@ services:
       - NODE_ENV=production
       - MAILTRAP_API_TOKEN=""
       - EMAIL_FROM=""
+      - FACEBOOK_APP_ID=""
     restart: unless-stopped
